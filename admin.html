@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buzztalk Admin Upload</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>📤 Buzztalk Admin Upload</h1>
+  <p>Upload event photos by Unique ID</p>
+</header>
+
+<section class="upload-box">
+  <input
+    type="text"
+    id="uid"
+    placeholder="Enter Unique ID (e.g. BUZZ-001)"
+  />
+
+  <input
+    type="file"
+    id="photo"
+    accept="image/*"
+  />
+
+  <button onclick="uploadPhoto()">Upload Photo</button>
+</section>
+
+<p id="status" style="text-align:center;"></p>
+
+<script src="admin.js"></script>
+</body>
+</html>
