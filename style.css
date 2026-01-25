@@ -94,22 +94,20 @@ button:hover { opacity: 0.9; }
 #qr-reader {
   width: 100%;
   max-width: 300px;
-  aspect-ratio: 1 / 1; /* Force Container Square */
+  aspect-ratio: 1 / 1; 
   margin: 0 auto;
   background: #000;
   border-radius: 12px;
-  overflow: hidden; /* Crop anything outside */
+  overflow: hidden;
   position: relative;
 }
 
-/* THE CAMERA VIDEO ITSELF - FORCE FILL */
 #qr-reader video {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important; /* KEY FIX: Zooms video to fill square */
+  object-fit: cover !important;
   border-radius: 12px;
 }
-
 .qr-controls {
   display: flex;
   flex-direction: column;
