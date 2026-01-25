@@ -45,16 +45,13 @@ async function loadPhotos() {
 }
 
 // -------------------------------------
-// RENDER GALLERY (STRICT .JPG DOWNLOAD)
+// RENDER GALLERY
 // -------------------------------------
 function renderGallery(photoUrls) {
   const gallery = document.getElementById("gallery");
-  
   photoUrls.forEach((url, index) => {
     const div = document.createElement("div");
     div.className = "photo";
-    
-    // Create a strict filename like "Buzztalk_Event_1.jpg"
     const fileName = `Buzztalk_Event_${index + 1}.jpg`;
 
     div.innerHTML = `
@@ -78,7 +75,7 @@ function renderGallery(photoUrls) {
 })();
 
 // -------------------------------------
-// QR SCANNER (THE WORKING VERSION)
+// QR SCANNER (DESKTOP + MOBILE FIX)
 // -------------------------------------
 let html5QrCode = null;
 let allCameras = [];
@@ -90,9 +87,9 @@ async function scanQR() {
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 
-  // 1. WINDOWS FIX: Kill any zombie streams
+  // 1. ZOMBIE KILLER (Windows Fix)
   if (window.stream) {
-    window.stream.getTracks().forEach(track => track.stop());
+    try { window.stream.getTracks().forEach(track => track.stop()); } catch(e){}
   }
   
   // 2. Clear old instance
@@ -101,22 +98,19 @@ async function scanQR() {
     html5QrCode = null;
   }
 
-  // 3. Start fresh
+  // 3. Start fresh with delay
   setTimeout(initScanner, 300);
 }
 
 function initScanner() {
   html5QrCode = new Html5Qrcode("qr-reader");
 
-  // Get cameras and start
   Html5Qrcode.getCameras().then(devices => {
     if (devices && devices.length) {
-      allCameras = devices; // Save list for flipping
-      
+      allCameras = devices;
       // Default to back camera
       let backCamIndex = devices.findIndex(d => d.label.toLowerCase().includes("back"));
       if (backCamIndex === -1) backCamIndex = devices.length - 1;
-      
       cameraIndex = backCamIndex;
       startCamera(allCameras[cameraIndex].id);
     } else {
@@ -135,10 +129,13 @@ function startCamera(cameraId) {
   html5QrCode.start(
     cameraId,
     {
-      fps: 10,
-      qrbox: 250
-      // REMOVED aspectRatio: 1.0 
-      // We let CSS crop it into a square instead. This is cleaner.
+      fps: 15,    // Faster scanning
+      // qrbox REMOVED: This allows scanning the WHOLE frame.
+      // Critical for Windows/Brave where resolution/crop mismatches occur.
+      videoConstraints: {
+        focusMode: "continuous", // Ask for autofocus
+        facingMode: "environment"
+      }
     },
     (decodedText) => {
       // Success
@@ -151,7 +148,7 @@ function startCamera(cameraId) {
       // Ignore scan errors
     }
   ).then(() => {
-    // Started successfully
+    // Started
   }).catch(err => {
     isScanning = false;
     handleError(err);
@@ -163,23 +160,17 @@ function switchCamera() {
     alert("Only one camera detected!");
     return;
   }
-
   if (!html5QrCode) return;
 
-  // Stop current stream first
   html5QrCode.stop().then(() => {
     isScanning = false;
-    // Cycle index
     cameraIndex = (cameraIndex + 1) % allCameras.length;
-    // Start new
     startCamera(allCameras[cameraIndex].id);
   }).catch(err => {
     console.error("Flip failed", err);
-    // Force restart if stop fails
     isScanning = false;
-    html5QrCode.clear().then(() => {
-        startCamera(allCameras[cameraIndex].id);
-    });
+    // Try forcing restart
+    html5QrCode.clear().then(() => startCamera(allCameras[cameraIndex].id));
   });
 }
 
@@ -188,7 +179,7 @@ function handleError(err) {
   console.error("Camera Error:", err);
   
   if (err.name === "NotReadableError") {
-    alert("Camera is busy. Close other apps/tabs.");
+    alert("Camera busy. Close other apps/tabs.");
   } else if (err.name === "NotAllowedError") {
     alert("Permission denied.");
   } else {
