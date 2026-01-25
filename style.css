@@ -1,0 +1,212 @@
+/* =============================
+   GLOBAL RESET & FONT
+============================= */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(circle at top, #111 0%, #0b0b0b 40%, #000 100%);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =============================
+   HEADER
+============================= */
+header { text-align: center; padding: 30px 20px; }
+header h1 { font-size: 24px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.02em; }
+header p { font-size: 15px; color: #bbb; margin: 0; line-height: 1.4; }
+
+/* =============================
+   INPUT / CONTROLS
+============================= */
+.upload-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px 24px;
+  flex-wrap: wrap;
+}
+
+.upload-box input {
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  outline: none;
+}
+
+.upload-box input:focus { border-color: #e60023; }
+
+/* =============================
+   BUTTONS
+============================= */
+button {
+  background: linear-gradient(135deg, #e60023, #ff3355);
+  color: #fff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-grow: 1;
+  max-width: 200px;
+}
+button:hover { opacity: 0.9; }
+
+/* =============================
+   QR MODAL (MOBILE FIXES)
+============================= */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95); /* Darker for focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.qr-modal.hidden { display: none; }
+
+.qr-box {
+  background: #111;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 0 50px rgba(230, 0, 35, 0.2);
+}
+
+/* REQUIRED: Explicit height for camera to render */
+/* QR READER CONTAINER - THE BOX */
+#qr-reader {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1; /* Force Container Square */
+  margin: 0 auto;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden; /* Crop anything outside */
+  position: relative;
+}
+
+/* THE CAMERA VIDEO ITSELF - FORCE FILL */
+#qr-reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* KEY FIX: Zooms video to fill square */
+  border-radius: 12px;
+}
+
+.qr-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qr-controls select {
+  padding: 10px;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  font-size: 16px;
+}
+
+.qr-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.qr-buttons button {
+  width: 50%;
+}
+
+/* =============================
+   GALLERY / LOADING
+============================= */
+.hidden { display: none; }
+#loading { text-align: center; color: #888; margin: 20px; }
+
+.masonry {
+  column-count: 4;
+  column-gap: 16px;
+  padding: 16px;
+}
+
+.photo { break-inside: avoid; margin-bottom: 16px; }
+.photo img { width: 100%; border-radius: 12px; background: #222; }
+.photo a { display: block; text-align: right; margin-top: 6px; color: #e60023; text-decoration: none; font-size: 14px; font-weight: 600; }
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .masonry { column-count: 2; }
+}
+@media (max-width: 480px) {
+  .masonry { column-count: 1; }
+  .qr-buttons button { padding: 12px; font-size: 14px; }
+}
+/* QR MODAL FIXED */
+/* QR MODAL FIXED */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.qr-modal.hidden { display: none; }
+
+.qr-box {
+  background: #111;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#qr-reader {
+  width: 100%;
+  max-width: 300px; /* Limits width so it doesn't get huge */
+  aspect-ratio: 1 / 1; /* FORCES SQUARE SHAPE */
+  margin: 0 auto;   /* Centers it */
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Make buttons side-by-side */
+.qr-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.qr-controls button {
+  width: 50%;
+  background: #333;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+}
