@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buzztalk Photo Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div id="qrModal" class="qr-modal hidden">
+  <div class="qr-box">
+    <div id="qr-reader"></div> <div class="qr-controls">
+      <button onclick="switchCamera()">🔄 Flip</button>
+      <button onclick="forceCloseQR()">✖ Close</button>
+    </div>
+  </div>
+</div>
+<header>
+  <h1>Enjoying Buzztalk?</h1>
+  <p>Enter your Unique ID or scan your QR to view your event photos</p>
+</header>
+
+<section class="upload-box">
+  <input
+    type="text"
+    id="uid"
+    placeholder="Enter Unique ID (e.g. BUZZ-001)"
+  />
+  <button onclick="loadPhotos()">View My Photos</button>
+  <button onclick="scanQR()">📷 Scan QR</button>
+</section>
+
+<section id="loading" class="hidden">
+  🔍 Fetching your moments...
+</section>
+
+<section id="gallery" class="masonry"></section>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
+<script src="script.js"></script>
+</body>
+</html>
