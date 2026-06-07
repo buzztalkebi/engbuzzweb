@@ -1,47 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buzztalk Photo Gallery</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngBuzz India </title>
+    <!-- Google Fonts for Bold Geometry -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Separate Stylesheet Links -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<div id="qrModal" class="qr-modal hidden">
-  <div class="qr-box">
-    <div id="qr-reader"></div> <div class="qr-controls">
-      <button onclick="switchCamera()">🔄 Flip</button>
-      <button onclick="forceCloseQR()">✖ Close</button>
-    </div>
-  </div>
-</div>
-<header>
-  <h1>Enjoying Buzztalk?</h1>
-  <p>Enter your Unique ID or scan your QR to view your event photos</p>
-</header>
 
-<section class="upload-box">
-  <input
-    type="text"
-    id="uid"
-    placeholder="Enter Unique ID (e.g. BUZZ-001)"
-  />
-  <button onclick="loadPhotos()">View My Photos</button>
-  <button onclick="scanQR()">📷 Scan QR</button>
-</section>
+    <!-- STICKY NAVBAR -->
+    <nav>
+        <div class="brand-logo">EngBuzz India</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#buzztalk">Buzz Talk</a></li>
+            <li><a href="#why-us">Why Choose Us</a></li>
+        </ul>
+        <a href="https://youtu.be/6WHhPTyvAtY" target="_blank" class="btn btn-primary">Join Our Mission</a>
+    </nav>
 
-<section id="loading" class="hidden">
-  🔍 Fetching your moments...
-</section>
+    <!-- HERO SECTION -->
+    <header class="hero" id="about">
+        <h1>Transforming Schools with Dynamic English Language Solutions</h1>
+        <p>Welcome to EngBuzz India. We are dedicated to revolutionizing English language education across the nation, providing innovative and tailored programs for schools to elevate student proficiency from the ground up.</p>
+        
+        <a href="https://youtu.be/6WHhPTyvAtY" target="_blank" class="btn btn-primary">
+            <span>📺</span> Subscribe on YouTube
+        </a>
 
-<section id="gallery" class="masonry"></section>
+        <div class="badge-container">
+            <div class="badge">📚 Aligned with NEP 2020</div>
+            <div class="badge">⚙️ 500+ Modules &amp; Activities</div>
+            <div class="badge">🌍 Global Excellence Standards</div>
+        </div>
+    </header>
 
-<script src="https://unpkg.com/html5-qrcode@2.3.8"></script>
-<script src="script.js"></script>
+    <!-- FLAGSHIP SECTION: BUZZ TALK -->
+    <section class="flagship-section" id="buzztalk">
+        <div class="flagship-wrapper">
+            <div class="flagship-content">
+                <h2>Introducing 'Buzz Talk'</h2>
+                <p>Our flagship initiative, <strong>Buzz Talk</strong>, provides an expansive platform for students to showcase their public speaking skills, engage in thought-provoking discussions, and inspire their peers. These high-impact sessions are meticulously engineered to skyrocket confidence and communication abilities, making it a cornerstone of our mission to build future leadership and innovation.</p>
+                <a href="https://youtu.be/6WHhPTyvAtY" target="_blank" class="btn">Learn More About Buzz Talk</a>
+            </div>
+            <div class="flagship-graphic">
+                <div class="graphic-title">🎙️ Leadership Starts Here</div>
+                <p class="graphic-desc">Empowering students to step up to the microphone, command the room, and voice big ideas confidently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE ADVANTAGES: WHY CHOOSE US -->
+    <section class="features-section" id="why-us">
+        <h2 class="section-title">Why Choose EngBuzz?</h2>
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <span class="feature-icon">🎓</span>
+                <h3>Expert Coaches</h3>
+                <p>We provide rigorously trained professional coaches to guide both students and educators, locking in exceptional execution and clear developmental outcomes.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🏃‍♂️</span>
+                <h3>Diverse Activities</h3>
+                <p>Over 500 carefully structured indoor and outdoor activities target distinct learning methodologies, making English learning deeply interactive and fun.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🤝</span>
+                <h3>Parental Involvement</h3>
+                <p>We purposefully tie in parental engagement strategies to ensure that the supportive learning ecosystem reaches far beyond the boundaries of the classroom.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">👑</span>
+                <h3>Student Leadership</h3>
+                <p>By shifting clear responsibilities onto students and naming team leaders, we encourage collaboration, high ownership, and deep everyday engagement.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CORPORATE VISION -->
+    <section class="vision-banner">
+        <div class="vision-box">
+            <h2>Our Vision For Tomorrow</h2>
+            <p>We envision transforming <strong>100,000 campuses</strong> into elite, premier academic institutions capable of competing on global scales within the next five years. Our overarching mission remains clear: empower millions of students to master English, bridging structural cultural gaps and global knowledge systems.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer>
+        <div class="footer-card">
+            <div class="footer-left">
+                <h2>Let's Illuminate Your Campus!</h2>
+                <p>Connect with our educational design specialists today to build customized language structures for your students.</p>
+                <a href="https://youtu.be/6WHhPTyvAtY" target="_blank" class="btn btn-primary btn-footer">Watch Showcase Video</a>
+            </div>
+            <div class="footer-right">
+                <div class="contact-item">
+                    <span class="contact-label"> Email Us:</span>
+                    <a href="mailto:engbuzzindia@gmail.com">engbuzzindia@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Call Us:</span>
+                    <a href="tel:+918289872605">+91 82898 72605</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label"> Youtube Official Channel:</span>
+                    <a href="https://youtu.be/6WHhPTyvAtY" target="_blank">youtube.com/EngBuzzIndia</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
