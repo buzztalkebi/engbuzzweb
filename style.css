@@ -1,210 +1,364 @@
-/* =============================
-   GLOBAL RESET & FONT
-============================= */
-* { box-sizing: border-box; }
+/* CSS Stylesheet for EngBuzz India Homepage */
+/* Neo-Brutalist High-Contrast Web Template */
+
+:root {
+    --bg-cream: #FDFBF7;
+    --buzz-yellow: #FFC700;
+    --black: #000000;
+    --white: #FFFFFF;
+    --text-muted: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-  margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  background: radial-gradient(circle at top, #111 0%, #0b0b0b 40%, #000 100%);
-  color: #fff;
-  -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-cream);
+    color: var(--black);
+    overflow-x: hidden;
+    padding-bottom: 4rem;
 }
 
-/* =============================
-   HEADER
-============================= */
-header { text-align: center; padding: 30px 20px; }
-header h1 { font-size: 24px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.02em; }
-header p { font-size: 15px; color: #bbb; margin: 0; line-height: 1.4; }
-
-/* =============================
-   INPUT / CONTROLS
-============================= */
-.upload-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px 24px;
-  flex-wrap: wrap;
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%;
+    border-bottom: 3px solid var(--black);
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.upload-box input {
-  background: #111;
-  color: #fff;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 14px 16px;
-  font-size: 16px;
-  width: 100%;
-  max-width: 300px;
-  outline: none;
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.upload-box input:focus { border-color: #e60023; }
-
-/* =============================
-   BUTTONS
-============================= */
-button {
-  background: linear-gradient(135deg, #e60023, #ff3355);
-  color: #fff;
-  border: none;
-  padding: 14px 20px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  flex-grow: 1;
-  max-width: 200px;
-}
-button:hover { opacity: 0.9; }
-
-/* =============================
-   QR MODAL (MOBILE FIXES)
-============================= */
-.qr-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95); /* Darker for focus */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 20px;
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
 }
 
-.qr-modal.hidden { display: none; }
-
-.qr-box {
-  background: #111;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 20px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 0 50px rgba(230, 0, 35, 0.2);
+.nav-links a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.2s;
 }
 
-/* REQUIRED: Explicit height for camera to render */
-/* QR READER CONTAINER - THE BOX */
-#qr-reader {
-  width: 100%;
-  max-width: 300px;
-  aspect-ratio: 1 / 1; 
-  margin: 0 auto;
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
+.nav-links a:hover {
+    color: var(--buzz-yellow);
 }
 
-#qr-reader video {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 12px;
-}
-.qr-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.qr-controls select {
-  padding: 10px;
-  border-radius: 8px;
-  background: #222;
-  color: #fff;
-  border: 1px solid #444;
-  font-size: 16px;
+/* --- NEO-BRUTALIST BUTTONS --- */
+.btn {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px var(--black);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
 }
 
-.qr-buttons {
-  display: flex;
-  gap: 10px;
+.btn-primary {
+    background: var(--buzz-yellow);
 }
 
-.qr-buttons button {
-  width: 50%;
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--black);
 }
 
-/* =============================
-   GALLERY / LOADING
-============================= */
-.hidden { display: none; }
-#loading { text-align: center; color: #888; margin: 20px; }
-
-.masonry {
-  column-count: 4;
-  column-gap: 16px;
-  padding: 16px;
+.btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--black);
 }
 
-.photo { break-inside: avoid; margin-bottom: 16px; }
-.photo img { width: 100%; border-radius: 12px; background: #222; }
-.photo a { display: block; text-align: right; margin-top: 6px; color: #e60023; text-decoration: none; font-size: 14px; font-weight: 600; }
-
-/* Mobile Layout */
-@media (max-width: 768px) {
-  .masonry { column-count: 2; }
-}
-@media (max-width: 480px) {
-  .masonry { column-count: 1; }
-  .qr-buttons button { padding: 12px; font-size: 14px; }
-}
-/* QR MODAL FIXED */
-/* QR MODAL FIXED */
-.qr-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 20px;
+/* --- HERO SECTION --- */
+.hero {
+    padding: 6rem 10% 4rem 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.qr-modal.hidden { display: none; }
-
-.qr-box {
-  background: #111;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 20px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
 }
 
-#qr-reader {
-  width: 100%;
-  max-width: 300px; /* Limits width so it doesn't get huge */
-  aspect-ratio: 1 / 1; /* FORCES SQUARE SHAPE */
-  margin: 0 auto;   /* Centers it */
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
+.hero p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 750px;
 }
 
-/* Make buttons side-by-side */
-.qr-controls {
-  display: flex;
-  gap: 10px;
+/* --- HERO STATS BADGES --- */
+.badge-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.qr-controls button {
-  width: 50%;
-  background: #333;
-  color: white;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
+.badge {
+    background: var(--white);
+    border: 2px solid var(--black);
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 3px 3px 0px var(--black);
+}
+
+/* --- FLAGSHIP FEATURE: BUZZ TALK --- */
+.flagship-section {
+    background: var(--buzz-yellow);
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+    padding: 5rem 10%;
+    margin: 4rem 0;
+}
+
+.flagship-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.flagship-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.flagship-content p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.flagship-graphic {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 8px 8px 0px var(--black);
+    text-align: center;
+}
+
+.graphic-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.graphic-desc {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* --- WHY CHOOSE US GRID --- */
+.features-section {
+    padding: 4rem 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 6px 6px 0px var(--black);
+    transition: transform 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* --- VISION BANNER --- */
+.vision-banner {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 10%;
+}
+
+.vision-box {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 8px 8px 0px var(--black);
+    text-align: center;
+}
+
+.vision-box h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.vision-box p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- FOOTER / CONTACT CARD --- */
+footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10%;
+}
+
+.footer-card {
+    background: var(--black);
+    color: var(--white);
+    padding: 3.5rem;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.footer-left h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--buzz-yellow);
+}
+
+.footer-left p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.btn-footer {
+    color: var(--black);
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+}
+
+.footer-right a {
+    color: var(--buzz-yellow);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    .flagship-wrapper, .footer-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
 }
