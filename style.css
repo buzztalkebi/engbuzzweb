@@ -1,12 +1,13 @@
 /* CSS Stylesheet for EngBuzz India Homepage */
-/* Neo-Brutalist High-Contrast Web Template */
+/* Neo-Brutalist High-Contrast Web Template - Pot Green Edition */
 
 :root {
     --bg-cream: #FDFBF7;
-    --buzz-yellow: #FFC700;
+    --pot-green: #1F6F41; /* New Deep Earthy Pot Green */
     --black: #000000;
     --white: #FFFFFF;
     --text-muted: #333333;
+    --text-light-muted: #E2EFE7;
 }
 
 * {
@@ -63,7 +64,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--buzz-yellow);
+    color: var(--pot-green);
 }
 
 /* --- NEO-BRUTALIST BUTTONS --- */
@@ -85,12 +86,22 @@ nav {
 }
 
 .btn-primary {
-    background: var(--buzz-yellow);
+    background: var(--pot-green);
+    color: var(--white); /* Swapped to white text for dark green readability */
+}
+
+.btn-fallback {
+    background: var(--white);
+    color: var(--black);
 }
 
 .btn:hover {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0px var(--black);
+}
+
+.btn-primary:hover {
+    color: var(--white);
 }
 
 .btn:active {
@@ -145,7 +156,8 @@ nav {
 
 /* --- FLAGSHIP FEATURE: BUZZ TALK --- */
 .flagship-section {
-    background: var(--buzz-yellow);
+    background: var(--pot-green);
+    color: var(--white); /* Swapped section container to white text */
     border-top: 3px solid var(--black);
     border-bottom: 3px solid var(--black);
     padding: 5rem 10%;
@@ -167,11 +179,12 @@ nav {
     margin-bottom: 1rem;
 }
 
-.flagship-content p {
+.flagship-text {
     font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.6;
     margin-bottom: 2rem;
+    color: var(--text-light-muted);
 }
 
 .flagship-graphic {
@@ -181,6 +194,7 @@ nav {
     border-radius: 16px;
     box-shadow: 8px 8px 0px var(--black);
     text-align: center;
+    color: var(--black); /* Protect nested graphic component card text */
 }
 
 .graphic-title {
@@ -225,6 +239,7 @@ nav {
 
 .feature-card:hover {
     transform: translateY(-5px);
+    border-color: var(--pot-green);
 }
 
 .feature-icon {
@@ -276,6 +291,10 @@ nav {
     line-height: 1.6;
 }
 
+.vision-box strong {
+    color: var(--pot-green);
+}
+
 /* --- FOOTER / CONTACT CARD --- */
 footer {
     max-width: 1200px;
@@ -298,17 +317,13 @@ footer {
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--buzz-yellow);
+    color: var(--pot-green); /* Pot green accent heading inside dark footer */
 }
 
 .footer-left p {
     font-size: 1.1rem;
     opacity: 0.9;
     margin-bottom: 2rem;
-}
-
-.btn-footer {
-    color: var(--black);
 }
 
 .footer-right {
@@ -333,7 +348,7 @@ footer {
 }
 
 .footer-right a {
-    color: var(--buzz-yellow);
+    color: var(--pot-green);
     text-decoration: none;
     font-size: 1.2rem;
 }
