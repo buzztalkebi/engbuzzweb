@@ -1,8 +1,7 @@
-
-
 :root {
     --bg-cream: #FDFBF7;
-    --green: #027C68; 
+    --green: #027C68;
+    --pot-green: #027C68;   /* FIX: was referenced everywhere but never defined */
     --black: #000000;
     --white: #FFFFFF;
     --text-muted: #333333;
@@ -86,21 +85,27 @@ nav {
 
 .btn-primary {
     background: var(--pot-green);
-    color: var(--white); /* Swapped to white text for dark green readability */
+    color: var(--white);
 }
 
-.btn-fallback {
-    background: var(--white);
-    color: var(--black);
+.btn-primary:hover {
+    color: var(--white);
+}
+
+/* FIX: footer button — white text on green, visible against dark footer */
+.btn-footer {
+    background: var(--pot-green);
+    color: var(--white);
+    border-color: var(--pot-green);
+}
+
+.btn-footer:hover {
+    color: var(--white);
 }
 
 .btn:hover {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0px var(--black);
-}
-
-.btn-primary:hover {
-    color: var(--white);
 }
 
 .btn:active {
@@ -156,7 +161,7 @@ nav {
 /* --- FLAGSHIP FEATURE: BUZZ TALK --- */
 .flagship-section {
     background: var(--pot-green);
-    color: var(--white); /* Swapped section container to white text */
+    color: var(--white);
     border-top: 3px solid var(--black);
     border-bottom: 3px solid var(--black);
     padding: 5rem 10%;
@@ -176,9 +181,11 @@ nav {
     font-size: 2.8rem;
     font-weight: 800;
     margin-bottom: 1rem;
+    color: var(--white);
 }
 
-.flagship-text {
+/* FIX: paragraph text was dark on a dark green background */
+.flagship-content p {
     font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.6;
@@ -193,7 +200,7 @@ nav {
     border-radius: 16px;
     box-shadow: 8px 8px 0px var(--black);
     text-align: center;
-    color: var(--black); /* Protect nested graphic component card text */
+    color: var(--black);
 }
 
 .graphic-title {
@@ -316,7 +323,7 @@ footer {
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--pot-green); /* Pot green accent heading inside dark footer */
+    color: var(--pot-green);
 }
 
 .footer-left p {
